@@ -1,0 +1,149 @@
+<%- include('../partials/header') %>
+<!-- Jumbotron -->
+<div class="p-4 shadow-4 rounded-3" style="background-color: hsl(0, 0%, 94%)">
+  <h2 style="text-align: center">More Information about <%= player.name %></h2>
+  <div class="ali">
+    <img class="jumb-img" src="<%=player.image%>" alt="" />
+  </div>
+  <hr class="my-4" />
+  <main class="center">
+    <h2>Content:</h2>
+    <p><%=player.content %></p>
+    <h3>Accolades include:</h3>
+    <ul>
+      <%- player.accolades.map(accolade => `
+      <li>${accolade}</li>
+      ` ).join('') %>
+    </ul>
+    <ul>
+
+    
+    </ul>
+    <div class="flx">
+      <form
+        style="margin-right: 10px"
+        action="/players/<%=player.id%>?_method=DELETE"
+        method="POST"
+      >
+        <button type="submit" class="btn btn-primary btn-lg">Delete</button>
+      </form>
+      <a href="/players/<%=player.id %>/edit" class="btn btn-primary btn-lg"
+        >Edit</a
+      >
+    </div>
+  </main>
+</div>
+<h1 style="text-align: center">Reviews:</h1>
+<section
+  class="p-4 p-md-5 text-center text-lg-start shadow-1-strong rounded first"
+  style="
+    background-image: url(https://mdbcdn.b-cdn.net/img/Photos/Others/background2.webp);
+  "
+>
+  <div>
+    <form action="/reviews/<%=player.id%>/comments" method="POST">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name:</label>
+        <input
+          autocomplete="off"
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          placeholder="put down your name"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label"
+          >Please provide your image link:</label
+        >
+        <input
+          autocomplete="off"
+          type="text"
+          class="form-control"
+          id="image"
+          name="image"
+          placeholder="Please provide an image link"
+        />
+      </div>
+
+      <label for="">
+        Rating:
+        <select class="form-select" aria-label="Default select example" name ="rating">
+          <option selected>Open this select menu</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </label>
+      <div class="mb-3">
+        <label for="detail" class="form-label">Review:</label>
+        <textarea
+          style="display: block"
+          id="detail"
+          cols="50"
+          name="detail"
+          placeholder="write down your review"
+        ></textarea>
+      </div>
+      <button class="btn btn-lg btn-dark" type="submit">Submit</button>
+    </form>
+  </div>
+</section>
+
+<% player.reviews.forEach(review =>{ %>
+<section
+  class="p-4 p-md-5 text-center text-lg-start shadow-1-strong rounded"
+  style="
+    background-image: url(https://mdbcdn.b-cdn.net/img/Photos/Others/background2.webp);
+  "
+>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-body m-3">
+          <div class="row">
+            <div
+              class="col-lg-4 d-flex justify-content-center align-items-center mb-4 mb-lg-0"
+            >
+              <img
+                src="<%= review.image %>"
+                class="rounded-circle img-fluid shadow-1"
+                width="200"
+                height="200"
+              />
+            </div>
+
+            <div class="col-lg-8">
+              <div>
+                <p><%= review.name %> makes rating <%= review.rating%> out 5</p>
+              </div>
+              <p class="text-muted fw-light mb-4"><%= review.detail %></p>
+
+              <p class="fw-bold lead mb-2">
+                <strong><%= review.name %> </strong>
+              </p>
+              
+            </div>
+            <div class="flx">
+              <form
+                style="margin-top: 14px"
+                action="/players/<%=player.id %>/reviews/<%=review.id %>?_method=DELETE"
+                method="POST"
+              >
+                <button class="btn btn-outline-dark">Delete</button>
+              </form>
+              <form style="margin-left: 10px; margin-top: 14px" action="">
+                <a href="/players/<%=player.id%>/reviews/<%= review.id %>  " class="btn btn-outline-dark">Edit</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<% }) %> <%- include('../partials/footer') %>

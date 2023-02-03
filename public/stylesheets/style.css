@@ -1,0 +1,49 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  color: #00b7ff;
+}
+section {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 30px;
+  margin-left: 100px;
+  margin-top: 40px;
+}
+.cor-pic {
+  /* height: 300px; */
+  width: 300px;
+  overflow: hidden;
+  border-radius: 100%;
+}
+
+.player-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  margin-top: 50px;
+}
+.jumb-img {
+  width: 70%;
+}
+.ali {
+  text-align: center;
+}
+.flx {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.center {
+  padding: 20px;
+}
+.first {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

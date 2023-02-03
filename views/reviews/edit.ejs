@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>
+<h1>Please the form to update the review</h1>
+
+<form
+  action="/players/<%=player.id %>/reviews/<%= review.id %>?_method=PUT"
+  method="POST"
+>
+  <label for="Rating">
+    Rating:
+    <select class="form-select" aria-label="Default select example" name="rating">
+      <option selected>Open this select menu</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  </label>
+  <div class="mb-3">
+    <label for="detail" class="form-label">Review:</label>
+    <textarea
+      style="display: block"
+      id="detail"
+      cols="50"
+      name="detail"
+      placeholder="write down your review"
+    ></textarea>
+  </div>
+  <button class="btn btn-lg btn-dark" type="submit">Submit</button>
+</form>
+
+<%- include('../partials/footer') %>
