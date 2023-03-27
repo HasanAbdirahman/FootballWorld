@@ -16,7 +16,7 @@ var indexRouter = require("./routes/index");
 var playersRouter = require("./routes/players");
 var reviewsRouter = require("./routes/reviews");
 
-// view engine setup
+// view engine setup is done here
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
